@@ -13,6 +13,15 @@ class App extends React.Component {
   };
 
   componentDidMount() {
+    // Retrieve locally stored order
+    const localStorageOrder = localStorage.getItem(
+      this.props.match.params.storeId
+    );
+    if (localStorageOrder) {
+      this.setState({ order: JSON.parse(localStorageOrder) });
+    }
+
+    // Retrieve remotely sotred markets fishes
     this.ref = base.syncState(`${this.props.match.params.storeId}/fishes`, {
       context: this,
       state: 'fishes'
@@ -21,6 +30,13 @@ class App extends React.Component {
 
   componentWillUnmount() {
     base.removeBinding(this.ref);
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem(
+      this.props.match.params.storeId,
+      JSON.stringify(this.state.order)
+    );
   }
 
   addFish = fish => {

@@ -4,6 +4,10 @@ import { formatPrice } from '../helpers';
 class Order extends React.Component {
   renderOrderItem = key => {
     const fish = this.props.fishes[key];
+
+    // if there's no fish, there's nothing to render 🤔
+    if (!fish) return;
+
     const count = this.props.order[key];
     const isAvailable = fish.status === 'available';
 
