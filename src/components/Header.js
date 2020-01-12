@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // stateless functional Component
 // we do not need a class just to return simple html
@@ -20,6 +21,11 @@ const Header = props => {
       </h3>
     </header>
   );
+};
+
+// It's declared here because it's a stateless function
+Header.propTypes = {
+  tagline: PropTypes.string.isRequired
 };
 
 export default Header;
