@@ -53,6 +53,9 @@ class EditFishForm extends React.Component {
           ref={this.imageRef}
           placeholder="Image"
         ></input>
+        <button onClick={() => this.props.deleteFish(this.props.index)}>
+          🌊 Remove Fish
+        </button>
       </div>
     );
   }
