@@ -55,7 +55,9 @@ class App extends React.Component {
             ))}
           </ul>
         </div>
-        <Order></Order>
+        {/* we could do {...this.state} and have the same result */}
+        {/* but if we put more props on state they would be passed to the order as well */}
+        <Order fishes={this.state.fishes} order={this.state.order}></Order>
         <Inventory
           addFish={this.addFish}
           loadSampleFishes={this.loadSampleFishes}
